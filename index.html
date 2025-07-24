@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>CLIN PET - Software Veterinario con Historia Clínica Electrónica</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base href="/">
-    <meta name="description" content="Software veterinario integral con historia clínica electrónica, gestión de pacientes y facturación">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIN PET - Software Veterinario</title>
+    <meta name="description" content="Software veterinario con historia clínica electrónica">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     
     <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Estilos -->
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,12 +25,12 @@
             <div class="logo">
                 <img src="assets/clinpet-logo.png" alt="CLIN PET" width="180">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#features"><i class="fas fa-paw"></i> Funcionalidades</a></li>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#features"><i class="fas fa-paw"></i> Funciones</a></li>
                     <li><a href="#pricing"><i class="fas fa-tag"></i> Precios</a></li>
                     <li><a href="#demo"><i class="fas fa-play-circle"></i> Demo</a></li>
-                    <li><a href="#contact" class="btn-primary"><i class="fas fa-phone"></i> Contacto</a></li>
+                    <li><a href="#contact" class="btn btn-primary"><i class="fas fa-phone"></i> Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -39,16 +39,21 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-text">
-                <h1>Software Veterinario <span>Todo en Uno</span></h1>
-                <p>Gestiona historias clínicas, agenda citas, emite facturas electrónicas y más.</p>
-                <div class="cta-buttons">
-                    <a href="#demo" class="btn-primary">Ver Demo</a>
-                    <a href="#contact" class="btn-secondary">Prueba Gratis</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Software Veterinario <span>Todo en Uno</span></h1>
+                    <p>Gestiona historias clínicas, agenda citas y controla tu inventario</p>
+                    <div class="hero-buttons">
+                        <a href="#demo" class="btn btn-primary">Ver Demo</a>
+                        <a href="#contact" class="btn btn-outline">Prueba Gratis</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="assets/hero-vet.png" alt="Dashboard CLIN PET">
+                <div class="hero-image">
+                    <!-- Imagen representativa (puedes cambiarla luego) -->
+                    <div class="placeholder-image">
+                        <i class="fas fa-paw" style="font-size: 10rem; color: #3B82F6;"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -56,62 +61,62 @@
     <!-- Features -->
     <section id="features" class="features">
         <div class="container">
-            <h2>Funcionalidades clave</h2>
-            <div class="feature-grid">
+            <h2 class="section-title">Funcionalidades clave</h2>
+            <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-file-medical"></i>
-                    <h3>Historia Clínica Electrónica</h3>
-                    <p>Registro digital de pacientes con plantillas personalizables.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>Historia Clínica</h3>
+                    <p>Registro digital completo de pacientes</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-calendar-check"></i>
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
                     <h3>Agenda de Citas</h3>
-                    <p>Programación inteligente con recordatorios SMS/Email.</p>
+                    <p>Programación con recordatorios automáticos</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-pills"></i>
-                    <h3>Inventario Farmacéutico</h3>
-                    <p>Control de medicamentos y alertas de stock mínimo.</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Control de Inventario</h3>
+                    <p>Gestión de medicamentos y productos</p>
                 </div>
-                <!-- Más features... -->
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-logo">
-                <img src="assets/clinpet-logo-white.png" alt="CLIN PET" width="160">
-            </div>
-            <div class="footer-links">
-                <div class="footer-col">
-                    <h4>Producto</h4>
-                    <ul>
-                        <li><a href="#features">Funciones</a></li>
-                        <li><a href="#pricing">Precios</a></li>
-                        <li><a href="#demo">Demo</a></li>
-                    </ul>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/clinpet-logo.png" alt="CLIN PET" width="150">
+                    <p>Software veterinario integral</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Soporte</h4>
-                    <ul>
-                        <li><a href="#">Centro de ayuda</a></li>
-                        <li><a href="#">Tutoriales</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Términos</a></li>
-                        <li><a href="#">Privacidad</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Producto</h4>
+                        <ul>
+                            <li><a href="#features">Funciones</a></li>
+                            <li><a href="#pricing">Precios</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Soporte</h4>
+                        <ul>
+                            <li><a href="#">Ayuda</a></li>
+                            <li><a href="#">Tutoriales</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>© 2023 CLIN PET. Todos los derechos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CLIN PET. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
@@ -120,7 +125,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
