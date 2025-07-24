@@ -1,43 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software para Restaurantes - MiSoluciÛn</title>
+    <meta charset="utf-8">
+    <title>CLIN PET - Software Veterinario con Historia Cl√≠nica Electr√≥nica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <meta name="description" content="Software veterinario integral con historia cl√≠nica electr√≥nica, gesti√≥n de pacientes y facturaci√≥n">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Puedes agregar m·s enlaces a fuentes o CSS aquÌ -->
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>MiRestaurant.pe</h1>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/clinpet-logo.png" alt="CLIN PET" width="180">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features"><i class="fas fa-paw"></i> Funcionalidades</a></li>
+                    <li><a href="#pricing"><i class="fas fa-tag"></i> Precios</a></li>
+                    <li><a href="#demo"><i class="fas fa-play-circle"></i> Demo</a></li>
+                    <li><a href="#contact" class="btn-primary"><i class="fas fa-phone"></i> Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#features">CaracterÌsticas</a></li>
-                <li><a href="#pricing">Precios</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <h2>Software todo en uno para tu restaurante</h2>
-            <p>Con facturaciÛn electrÛnica integrada y control de inventario</p>
-            <button class="cta-button">Prueba Gratis</button>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Software Veterinario <span>Todo en Uno</span></h1>
+                <p>Gestiona historias cl√≠nicas, agenda citas, emite facturas electr√≥nicas y m√°s.</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="btn-primary">Ver Demo</a>
+                    <a href="#contact" class="btn-secondary">Prueba Gratis</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/hero-vet.png" alt="Dashboard CLIN PET">
+            </div>
+        </div>
+    </section>
 
-        <section id="features" class="features">
-            <!-- AquÌ irÌan las caracterÌsticas -->
-        </section>
-    </main>
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Funcionalidades clave</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-medical"></i>
+                    <h3>Historia Cl√≠nica Electr√≥nica</h3>
+                    <p>Registro digital de pacientes con plantillas personalizables.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Agenda de Citas</h3>
+                    <p>Programaci√≥n inteligente con recordatorios SMS/Email.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-pills"></i>
+                    <h3>Inventario Farmac√©utico</h3>
+                    <p>Control de medicamentos y alertas de stock m√≠nimo.</p>
+                </div>
+                <!-- M√°s features... -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 MiRestaurant.pe - Todos los derechos reservados</p>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="assets/clinpet-logo-white.png" alt="CLIN PET" width="160">
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#features">Funciones</a></li>
+                        <li><a href="#pricing">Precios</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Tutoriales</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">T√©rminos</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>¬© 2023 CLIN PET. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <!-- Scripts al final del body -->
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/51987654321" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
