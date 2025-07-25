@@ -198,32 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Formulario de contacto
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simular envío del formulario
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                submitButton.innerHTML = '<i class="fas fa-check"></i> Enviado!';
-                
-                // Resetear formulario después de 2 segundos
-                setTimeout(() => {
-                    contactForm.reset();
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                }, 2000);
-            }, 1500);
-        });
-    }
+
     
     // Efecto hover en el logo
     const logoContainer = document.querySelector('.logo-container');
@@ -250,3 +225,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Mensaje flotante de agradecimiento
+function showFloatingMessage() {
+    const floatingMsg = document.createElement('div');
+    floatingMsg.className = 'floating-message animate__animated animate__fadeInUp';
+    floatingMsg.innerHTML = `
+        <div class="message-content">
+            <i class="fas fa-check-circle"></i>
+            <p>¡Gracias por contactarnos!<br>Nos comunicaremos contigo pronto.</p>
+        </div>
+    `;
+    document.body.appendChild(floatingMsg);
+    
+    // Desaparece después de 4 segundos
+    setTimeout(() => {
+        floatingMsg.classList.add('animate__fadeOut');
+        setTimeout(() => floatingMsg.remove(), 500);
+    }, 4000);
+}
+
+// Función para mostrar mensaje flotante
+function showFloatingMessage() {
+    const floatingMsg = document.createElement('div');
+    floatingMsg.className = 'floating-message animate__animated animate__fadeInUp';
+    floatingMsg.innerHTML = `
+        <div class="message-content">
+            <i class="fas fa-check-circle"></i>
+            <p>¡Gracias por contactarnos!<br>Nos comunicaremos contigo pronto.</p>
+        </div>
+    `;
+    document.body.appendChild(floatingMsg);
+    
+    setTimeout(() => {
+        floatingMsg.classList.add('animate__fadeOut');
+        setTimeout(() => floatingMsg.remove(), 500);
+    }, 4000);
+}
+
+// Manejo del formulario (versión unificada)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        // Feedback visual inmediato
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        submitButton.disabled = true;
+        
+        // Envío real ocurre aquí (no usamos preventDefault)
+        
+        // Feedback después de 1.5 segundos (simulando procesamiento)
+        setTimeout(() => {
+            showFloatingMessage();
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+            
+            // Reset después de 2 segundos más
+            setTimeout(() => {
+                this.reset();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        }, 1500);
+    });
+}

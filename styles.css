@@ -1265,3 +1265,49 @@ img {
         width: 100%;
     }
 }
+
+#agendar-demo-btn {
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+    position: relative;
+    cursor: pointer !important;
+}
+
+.floating-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    max-width: 320px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: floatIn 0.5s forwards;
+}
+
+@keyframes floatIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.message-content i {
+    font-size: 28px;
+    margin-right: 15px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.floating-message p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+}
