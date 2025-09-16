@@ -645,124 +645,6 @@ footer::before {
 }
 
 /* Botón de impresión futurista */
-.print-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--glow-purple);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 100;
-    font-size: 1.2rem;
-    border: 1px solid var(--matrix-green);
-    animation: pulse 2s infinite alternate;
-}
-
-.print-btn:hover {
-    transform: scale(1.1) rotate(90deg);
-    box-shadow: 0 0 25px var(--neon-blue), 0 0 40px var(--neon-purple);
-}
-
-/* Efecto de terminal typing */
-.typing-effect::after {
-    content: '|';
-    animation: blink 1s infinite step-start;
-}
-
-/* Responsive design */
-@media (max-width: 900px) {
-    .main-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .profile-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .contact-info {
-        justify-content: center;
-    }
-    
-    .profile-text h1 {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 15px;
-    }
-    
-    header {
-        padding: 25px;
-    }
-    
-    .profile-text h1 {
-        font-size: 1.7rem;
-    }
-    
-    .profile-text h2 {
-        font-size: 1.1rem;
-    }
-    
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .contact-item {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .card {
-        padding: 20px;
-    }
-    
-    .education-item {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .edu-date {
-        min-width: auto;
-        align-self: flex-start;
-    }
-    
-    .print-btn {
-        bottom: 15px;
-        right: 15px;
-        width: 50px;
-        height: 50px;
-    }
-}
-
-/* Animaciones de entrada */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card {
-    animation: fadeIn 0.6s ease forwards;
-}
-
 @media print {
     @page {
         margin: 0.5in;
@@ -785,8 +667,10 @@ footer::before {
         box-shadow: none !important;
     }
     
-    /* Ocultar elementos de fondo futuristas */
-    .matrix-bg, .circuit-grid, .floating-particles {
+    /* Ocultar elementos de fondo y decorativos */
+    .matrix-bg, .circuit-grid, .floating-particles,
+    .print-btn, .profile-img::before, .card::before,
+    header::before, header::after {
         display: none !important;
     }
     
@@ -797,12 +681,14 @@ footer::before {
         border: 1px solid #ddd !important;
         border-radius: 0 !important;
         page-break-inside: avoid;
-        padding: 20px !important;
+        padding: 15px !important;
+        margin-bottom: 15px !important;
     }
     
-    header::before, header::after,
-    .card::before, .card::after {
-        display: none !important;
+    .profile-header {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
     
     .profile-img {
@@ -810,26 +696,26 @@ footer::before {
         background: #f0f0f0 !important;
         color: #333 !important;
         box-shadow: none !important;
-        width: 100px !important;
-        height: 100px !important;
-        font-size: 40px !important;
+        width: 80px !important;
+        height: 80px !important;
+        font-size: 30px !important;
         animation: none !important;
-    }
-    
-    .profile-img::before {
-        display: none !important;
     }
     
     .profile-text h1 {
-        color: #333 !important;
-        font-size: 1.8rem !important;
+        color: #000 !important;
+        font-size: 20pt !important;
         text-shadow: none !important;
         animation: none !important;
+        margin-bottom: 5px !important;
+        font-weight: bold !important;
     }
     
     .profile-text h2 {
-        color: #666 !important;
-        font-size: 1.1rem !important;
+        color: #444 !important;
+        font-size: 14pt !important;
+        padding-left: 0 !important;
+        margin-bottom: 10px !important;
     }
     
     .profile-text h2::before {
@@ -837,6 +723,10 @@ footer::before {
     }
     
     .contact-info {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 10px !important;
         justify-content: flex-start !important;
     }
     
@@ -845,7 +735,11 @@ footer::before {
         border: 1px solid #ddd !important;
         color: #333 !important;
         box-shadow: none !important;
-        padding: 6px 12px !important;
+        padding: 5px 10px !important;
+        text-decoration: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
     }
     
     .contact-item::before {
@@ -868,38 +762,139 @@ footer::before {
         color: #666;
     }
     
+    .main-content {
+        display: block !important;
+        gap: 0 !important;
+    }
+    
     .card h3 {
-        color: #333 !important;
+        color: #000 !important;
         border-bottom: 1px solid #ddd !important;
-        font-size: 1.3rem !important;
+        font-size: 16pt !important;
         text-shadow: none !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 15px !important;
+        font-weight: bold !important;
     }
     
     .card h3::after {
         display: none !important;
     }
     
+    .card h3 i {
+        color: #000 !important;
+    }
+    
+    .timeline {
+        padding-left: 15px !important;
+    }
+    
     .timeline::before {
         background: #ccc !important;
         box-shadow: none !important;
+        width: 2px !important;
+    }
+    
+    .timeline-item {
+        margin-bottom: 15px !important;
     }
     
     .timeline-item::before {
         background: #333 !important;
         box-shadow: none !important;
         animation: none !important;
+        width: 8px !important;
+        height: 8px !important;
+        left: -19px !important;
     }
     
     .timeline-date {
-        color: #333 !important;
+        color: #000 !important;
         background: #f0f0f0 !important;
         border: 1px solid #ddd !important;
+        font-weight: bold !important;
+        margin-bottom: 5px !important;
+        padding: 3px 8px !important;
+    }
+    
+    .timeline-content h4 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        margin-bottom: 5px !important;
+        font-weight: bold !important;
     }
     
     .company {
-        color: #666 !important;
+        color: #444 !important;
+        background: #f5f5f5 !important;
+        border: 1px solid #ddd !important;
+        font-style: italic !important;
+        margin-bottom: 8px !important;
+        padding: 2px 6px !important;
+    }
+    
+    .timeline-content p {
+        color: #333 !important;
+        font-size: 11pt !important;
+    }
+    
+    .education-item {
+        display: flex !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
+        align-items: flex-start !important;
+    }
+    
+    .edu-date {
+        color: #000 !important;
         background: #f0f0f0 !important;
         border: 1px solid #ddd !important;
+        min-width: 90px !important;
+        padding: 3px 8px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
+    
+    .edu-content h4 {
+        color: #000 !important;
+        font-size: 12pt !important;
+        margin-bottom: 3px !important;
+        font-weight: bold !important;
+    }
+    
+    .institute {
+        color: #444 !important;
+        font-style: italic !important;
+    }
+    
+    .skills-grid {
+        display: block !important;
+        gap: 0 !important;
+    }
+    
+    .skill-category {
+        margin-bottom: 15px !important;
+    }
+    
+    .skill-category h4 {
+        color: #000 !important;
+        font-size: 12pt !important;
+        margin-bottom: 8px !important;
+        padding-left: 10px !important;
+        border-left: 2px solid #333 !important;
+        font-weight: bold !important;
+    }
+    
+    .skill-category h4::before,
+    .skill-category h4::after {
+        display: none !important;
+    }
+    
+    .skills-list {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        margin-bottom: 10px !important;
     }
     
     .skill-tag {
@@ -907,60 +902,100 @@ footer::before {
         border: 1px solid #ddd !important;
         color: #333 !important;
         box-shadow: none !important;
+        padding: 4px 10px !important;
+        font-size: 10pt !important;
     }
     
     .skill-tag::before {
         display: none !important;
     }
     
+    .project-item {
+        margin-bottom: 15px !important;
+        padding: 12px !important;
+        background: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    .project-title {
+        color: #000 !important;
+        font-size: 12pt !important;
+        margin-bottom: 5px !important;
+        font-weight: bold !important;
+    }
+    
     .project-link {
         color: #333 !important;
         text-shadow: none !important;
+        margin-bottom: 5px !important;
+        text-decoration: underline !important;
     }
     
     .project-date {
         color: #666 !important;
         background: #f0f0f0 !important;
         border: 1px solid #ddd !important;
+        margin-bottom: 8px !important;
+        padding: 2px 6px !important;
     }
     
-    .print-btn {
-        display: none !important;
-    }
-    
-    .main-content {
-        display: block !important;
-    }
-    
-    .card {
-        break-inside: avoid;
-        margin-bottom: 20px;
-    }
-    
-    footer {
-        border-top: 1px solid #ddd;
-        margin-top: 30px;
-        padding-top: 20px;
-    }
-    
-    footer::before {
-        background: #333 !important;
-        box-shadow: none !important;
-    }
-    
-    /* Ajustar fuentes para impresión */
-    body, .card, .timeline-content p {
+    .project-description {
+        color: #333 !important;
         font-size: 11pt !important;
     }
     
-    h1, h2, h3, h4 {
-        font-size: 1.1em !important;
+    footer {
+        text-align: center !important;
+        padding: 15px !important;
+        margin-top: 20px !important;
+        color: #666 !important;
+        font-size: 10pt !important;
+        border-top: 1px solid #ddd !important;
+    }
+    
+    footer::before {
+        display: none !important;
     }
     
     /* Detener todas las animaciones */
     * {
         animation: none !important;
         transition: none !important;
+    }
+    
+    /* Optimizar para ahorro de tinta */
+    .contact-item, .skill-tag, .timeline-date,
+    .company, .project-date, .edu-date {
+        background-image: none !important;
+    }
+    
+    /* Asegurar que no hay cortes de página en medio de elementos importantes */
+    .card, .timeline-item, .education-item, .project-item {
+        page-break-inside: avoid;
+    }
+    
+    /* Ajustar fuentes para impresión */
+    body, .card, .timeline-content p, .project-description {
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+    }
+    
+    h1 {
+        font-size: 20pt !important;
+    }
+    
+    h2 {
+        font-size: 14pt !important;
+    }
+    
+    h3 {
+        font-size: 13pt !important;
+    }
+    
+    h4 {
+        font-size: 12pt !important;
     }
 }
 
