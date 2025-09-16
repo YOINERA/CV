@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentYear = new Date().getFullYear();
     document.getElementById('currentYear').textContent = currentYear;
     
+    // Crear efecto de matrix code
+    createMatrixBackground();
+    
+    // Crear partículas flotantes
+    createFloatingParticles();
+    
+    // Efecto de escritura de terminal
+    typeWriterEffect();
+    
     // Efecto de aparición para las tarjetas
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
@@ -16,17 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100 + index * 100);
     });
     
-    // Crear partículas de fondo
-    createParticles();
-    
     // Efecto de interacción con las tarjetas
     cards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.boxShadow = '0 15px 35px rgba(0, 102, 255, 0.2)';
+            card.style.boxShadow = '0 0 25px var(--neon-purple), 0 0 50px rgba(189, 0, 255, 0.3)';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.boxShadow = '0 10px 30px rgba(0, 102, 255, 0.15)';
+            card.style.boxShadow = 'var(--glow-purple)';
         });
     });
     
@@ -41,54 +47,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500 + index * 50);
     });
     
-    // Smooth scroll para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Detectar si es un dispositivo táctil
-    let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
-    if (isTouchDevice) {
-        document.body.classList.add('touch-device');
-    } else {
-        document.body.classList.add('no-touch-device');
-    }
-    
-    // Manejar la visibilidad del botón de impresión al desplazarse
-    let lastScrollTop = 0;
-    const printBtn = document.querySelector('.print-btn');
-    
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    // Efecto de terminal typing para títulos
+    const titles = document.querySelectorAll('.card h3');
+    titles.forEach(title => {
+        const originalText = title.textContent;
+        title.textContent = '';
         
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            printBtn.style.opacity = '0.7';
-        } else {
-            // Scrolling up
-            printBtn.style.opacity = '1';
+        let i = 0;
+        function typeTitle() {
+            if (i < originalText.length) {
+                title.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeTitle, 50);
+            }
         }
         
-        lastScrollTop = scrollTop;
+        setTimeout(typeTitle, 800);
     });
     
-    // Función para crear partículas de fondo
-    function createParticles() {
+    // Función para crear efecto de matrix code
+    function createMatrixBackground() {
+        const matrixContainer = document.createElement('div');
+        matrixContainer.className = 'matrix-bg';
+        document.body.appendChild(matrixContainer);
+        
+        // Crear efecto de caracteres cayendo (simulado con CSS)
+        matrixContainer.innerHTML = `
+            <style>
+                .matrix-bg {
+                    background: linear-gradient(transparent 90%, var(--dark-bg) 10%);
+                    background-size: 100% 4px;
+                    animation: matrix-rain 20s infinite linear;
+                }
+                
+                @keyframes matrix-rain {
+                    0% { background-position: 0 0; }
+                    100% { background-position: 0 100%; }
+                }
+            </style>
+        `;
+    }
+    
+    // Función para crear partículas flotantes
+    function createFloatingParticles() {
         const particlesContainer = document.createElement('div');
-        particlesContainer.className = 'particles';
+        particlesContainer.className = 'floating-particles';
         document.body.appendChild(particlesContainer);
         
-        const particleCount = 50;
+        const particleCount = 30;
         
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -114,12 +120,41 @@ document.addEventListener('DOMContentLoaded', function() {
             particle.style.animationDuration = `${duration}s`;
             particle.style.animationDelay = `${delay}s`;
             
-            // Color aleatorio (azul o verde)
-            const colors = ['#0066ff', '#00cc99'];
+            // Color aleatorio (verde matrix, azul neón o púrpura)
+            const colors = ['#00ff4c', '#0066ff', '#bd00ff'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             particle.style.background = randomColor;
             
             particlesContainer.appendChild(particle);
         }
     }
+    
+    // Efecto de escritura para el perfil
+    function typeWriterEffect() {
+        const profileTitle = document.querySelector('.profile-text h2');
+        const originalText = profileTitle.textContent;
+        profileTitle.textContent = '';
+        profileTitle.classList.add('typing-effect');
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                profileTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                profileTitle.classList.remove('typing-effect');
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+    }
+    
+    // Efecto de sonido al pasar el ratón sobre elementos (opcional)
+    const interactiveElements = document.querySelectorAll('.contact-item, .skill-tag, .card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            // Podrías agregar sonidos futuristas aquí si lo deseas
+        });
+    });
 });
