@@ -1,26 +1,18 @@
 :root {
     --primary: #2563eb;
+    --primary-light: #3b82f6;
     --primary-dark: #1e40af;
-    --secondary: #4f46e5;
-    --dark: #1e293b;
-    --darker: #0f172a;
-    --light: #f8fafc;
-    --gray: #94a3b8;
-    --card-bg: #ffffff;
+    --secondary: #10b981;
+    --secondary-light: #34d399;
+    --accent: #6366f1;
+    --light: #ffffff;
+    --light-gray: #f8fafc;
+    --gray: #e2e8f0;
+    --dark-gray: #94a3b8;
     --text: #334155;
     --text-light: #64748b;
     --border: #e2e8f0;
-    --accent: #3b82f6;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --card-bg: #1e293b;
-        --text: #e2e8f0;
-        --text-light: #94a3b8;
-        --border: #334155;
-        --dark: #0f172a;
-    }
+    --shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -31,7 +23,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--gray) 100%);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
@@ -45,11 +37,11 @@ body {
 }
 
 header {
-    background: var(--card-bg);
-    border-radius: 12px;
+    background: var(--light);
+    border-radius: 15px;
     padding: 30px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px var(--shadow);
     border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
@@ -81,8 +73,9 @@ header::after {
     justify-content: center;
     font-size: 50px;
     color: white;
-    border: 3px solid var(--primary);
+    border: 3px solid var(--primary-light);
     flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
 }
 
 .profile-text h1 {
@@ -135,18 +128,18 @@ header::after {
 }
 
 .card {
-    background: var(--card-bg);
-    border-radius: 12px;
+    background: var(--light);
+    border-radius: 15px;
     padding: 25px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px var(--shadow);
     border: 1px solid var(--border);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px var(--shadow);
 }
 
 .card h3 {
@@ -207,7 +200,7 @@ header::after {
 
 .company {
     color: var(--secondary);
-    font-style: italic;
+    font-weight: 500;
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
@@ -237,6 +230,7 @@ header::after {
 .institute {
     color: var(--secondary);
     font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .skills-grid {
@@ -292,6 +286,7 @@ header::after {
     text-decoration: none;
     display: inline-block;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .project-link:hover {
@@ -302,48 +297,12 @@ header::after {
 .project-date {
     color: var(--text-light);
     font-size: 0.9rem;
-}
-
-.certification-item {
-    margin-bottom: 15px;
-}
-
-.certification-item h4 {
-    font-size: 1rem;
     margin-bottom: 5px;
-    color: var(--text);
 }
 
-.cert-provider {
-    color: var(--primary);
+.project-description {
     font-size: 0.9rem;
-}
-
-.language-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.language-name {
-    font-size: 0.95rem;
-}
-
-.language-level {
-    display: flex;
-    gap: 5px;
-}
-
-.level-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border);
-}
-
-.level-dot.active {
-    background: var(--primary);
+    color: var(--text-light);
 }
 
 footer {
@@ -430,5 +389,123 @@ footer {
     
     .edu-date {
         min-width: auto;
+    }
+}@media print {
+    @page {
+        margin: 0.5in;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    header, .card {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    header::after {
+        background: #333 !important;
+    }
+    
+    .profile-img {
+        border: 2px solid #333 !important;
+        background: #f0f0f0 !important;
+        color: #333 !important;
+    }
+    
+    .profile-text h1 {
+        color: #333 !important;
+    }
+    
+    .profile-text h2 {
+        color: #666 !important;
+    }
+    
+    .contact-item {
+        background: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
+        color: #333 !important;
+    }
+    
+    .contact-item i {
+        color: #333 !important;
+    }
+    
+    a {
+        color: #333 !important;
+        text-decoration: none;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+        font-weight: normal;
+        color: #666;
+    }
+    
+    .card h3 {
+        color: #333 !important;
+        border-bottom: 1px solid #ddd !important;
+    }
+    
+    .timeline::before {
+        background: #ccc !important;
+    }
+    
+    .timeline-item::before {
+        background: #333 !important;
+        box-shadow: none !important;
+    }
+    
+    .timeline-date {
+        color: #333 !important;
+    }
+    
+    .company {
+        color: #666 !important;
+    }
+    
+    .skill-tag {
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+        color: #333 !important;
+    }
+    
+    .project-link {
+        color: #333 !important;
+    }
+    
+    .print-btn {
+        display: none !important;
+    }
+    
+    .main-content {
+        display: block !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        margin-bottom: 15px;
+    }
+    
+    footer {
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+        padding-top: 15px;
     }
 }
