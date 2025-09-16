@@ -16,14 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100 + index * 100);
     });
     
+    // Crear partículas de fondo
+    createParticles();
+    
     // Efecto de interacción con las tarjetas
     cards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+            card.style.boxShadow = '0 15px 35px rgba(0, 102, 255, 0.2)';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.05)';
+            card.style.boxShadow = '0 10px 30px rgba(0, 102, 255, 0.15)';
         });
     });
     
@@ -78,4 +81,45 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lastScrollTop = scrollTop;
     });
+    
+    // Función para crear partículas de fondo
+    function createParticles() {
+        const particlesContainer = document.createElement('div');
+        particlesContainer.className = 'particles';
+        document.body.appendChild(particlesContainer);
+        
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Posición aleatoria
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 4 + 1;
+            
+            // Duración de animación aleatoria
+            const duration = Math.random() * 20 + 10;
+            
+            // Retraso aleatorio
+            const delay = Math.random() * 5;
+            
+            particle.style.left = `${posX}vw`;
+            particle.style.top = `${posY}vh`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            
+            // Color aleatorio (azul o verde)
+            const colors = ['#0066ff', '#00cc99'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = randomColor;
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
 });
