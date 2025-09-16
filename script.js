@@ -1,292 +1,63 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar partículas.js
-    particlesJS('particles-js', {
-        "particles": {
-            "number": {
-                "value": 60,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#00a8e8"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                }
-            },
-            "opacity": {
-                "value": 0.3,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 2,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#00a8e8",
-                "opacity": 0.2,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 1,
-                "direction": "none",
-                "random": true,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": true,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 140,
-                    "line_linked": {
-                        "opacity": 0.3
-                    }
-                },
-                "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
-                },
-                "repulse": {
-                    "distance": 200,
-                    "duration": 0.4
-                },
-                "push": {
-                    "particles_nb": 4
-                },
-                "remove": {
-                    "particles_nb": 2
-                }
-            }
-        },
-        "retina_detect": true
-    });
-
-    // Menú móvil
-    const menuToggle = document.getElementById('menu-toggle');
-    const navList = document.querySelector('.nav-list');
+    // Efecto de escritura para el título
+    const profileTitle = document.querySelector('.title');
+    const originalText = profileTitle.textContent;
+    profileTitle.textContent = '';
     
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navList.classList.toggle('active');
-    });
-    
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            navList.classList.remove('active');
-        });
-    });
-    
-    // Scroll suave para enlaces
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Efecto de header al hacer scroll
-    const header = document.querySelector('.glass-header');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    let i = 0;
+    function typeWriter() {
+        if (i < originalText.length) {
+            profileTitle.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
         }
-    });
-    
-    // Botón "Volver arriba"
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-    
-    // Animaciones al hacer scroll
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card');
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementPosition < windowHeight - 100) {
-                element.classList.add('animate__animated', 'animate__fadeInUp');
-            }
-        });
-    };
-    
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Ejecutar una vez al cargar
-    
-    // Efecto hover en las tarjetas de características
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    featureCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const dots = card.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.style.animation = `float ${4 + index}s ease-in-out infinite`;
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const dots = card.querySelectorAll('.dot');
-            dots.forEach(dot => {
-                dot.style.animation = 'none';
-                setTimeout(() => {
-                    dot.style.animation = `float ${Math.random() * 3 + 3}s ease-in-out infinite`;
-                }, 10);
-            });
-        });
-    });
-    
-
-    
-    // Efecto hover en el logo
-    const logoContainer = document.querySelector('.logo-container');
-    
-    if (logoContainer) {
-        logoContainer.addEventListener('mouseenter', () => {
-            const logo = logoContainer.querySelector('.logo');
-            logo.style.transform = 'scale(1.05)';
-        });
-        
-        logoContainer.addEventListener('mouseleave', () => {
-            const logo = logoContainer.querySelector('.logo');
-            logo.style.transform = 'scale(1)';
-        });
     }
     
-    // Video placeholder click
-    const videoPlaceholder = document.querySelector('.video-placeholder');
+    typeWriter();
     
-    if (videoPlaceholder) {
-        videoPlaceholder.addEventListener('click', () => {
-            // Aquí iría la lógica para abrir el video
-            alert('Aquí se abriría el video de demostración');
-        });
-    }
-});
-
-// Mensaje flotante de agradecimiento
-function showFloatingMessage() {
-    const floatingMsg = document.createElement('div');
-    floatingMsg.className = 'floating-message animate__animated animate__fadeInUp';
-    floatingMsg.innerHTML = `
-        <div class="message-content">
-            <i class="fas fa-check-circle"></i>
-            <p>¡Gracias por contactarnos!<br>Nos comunicaremos contigo pronto.</p>
-        </div>
-    `;
-    document.body.appendChild(floatingMsg);
-    
-    // Desaparece después de 4 segundos
-    setTimeout(() => {
-        floatingMsg.classList.add('animate__fadeOut');
-        setTimeout(() => floatingMsg.remove(), 500);
-    }, 4000);
-}
-
-// Función para mostrar mensaje flotante
-function showFloatingMessage() {
-    const floatingMsg = document.createElement('div');
-    floatingMsg.className = 'floating-message animate__animated animate__fadeInUp';
-    floatingMsg.innerHTML = `
-        <div class="message-content">
-            <i class="fas fa-check-circle"></i>
-            <p>¡Gracias por contactarnos!<br>Nos comunicaremos contigo pronto.</p>
-        </div>
-    `;
-    document.body.appendChild(floatingMsg);
-    
-    setTimeout(() => {
-        floatingMsg.classList.add('animate__fadeOut');
-        setTimeout(() => floatingMsg.remove(), 500);
-    }, 4000);
-}
-
-// Manejo del formulario (versión unificada)
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        
-        // Feedback visual inmediato
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-        submitButton.disabled = true;
-        
-        // Envío real ocurre aquí (no usamos preventDefault)
-        
-        // Feedback después de 1.5 segundos (simulando procesamiento)
+    // Efecto de aparición para las secciones
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((section, index) => {
         setTimeout(() => {
-            showFloatingMessage();
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Enviado!';
-            
-            // Reset después de 2 segundos más
-            setTimeout(() => {
-                this.reset();
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }, 2000);
-        }, 1500);
+            section.style.opacity = 1;
+            section.style.transform = 'translateY(0)';
+        }, 300 + index * 100);
     });
-}
+    
+    // Efecto de progreso para las habilidades (opcional)
+    const progressBars = document.querySelectorAll('.progress');
+    progressBars.forEach(bar => {
+        const width = bar.parentElement.getAttribute('data-progress');
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 1000);
+    });
+    
+    // Efecto de conteo para estadísticas (opcional)
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 100;
+        
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCounter, 20);
+        } else {
+            counter.innerText = target;
+        }
+    });
+    
+    // Animación para las habilidades al hacer hover
+    const skills = document.querySelectorAll('.skill');
+    skills.forEach(skill => {
+        skill.addEventListener('mouseover', () => {
+            skill.style.transform = 'scale(1.1)';
+            skill.style.transition = 'transform 0.3s ease';
+        });
+        
+        skill.addEventListener('mouseout', () => {
+            skill.style.transform = 'scale(1)';
+        });
+    });
+});
