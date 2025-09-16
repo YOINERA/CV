@@ -644,6 +644,124 @@ footer::before {
     box-shadow: var(--glow-green);
 }
 
+/* Botón de impresión futurista */
+.print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow-purple);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    font-size: 1.2rem;
+    border: 1px solid var(--matrix-green);
+    animation: pulse 2s infinite alternate;
+}
+
+.print-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 0 25px var(--neon-blue), 0 0 40px var(--neon-purple);
+}
+
+/* Efecto de terminal typing */
+.typing-effect::after {
+    content: '|';
+    animation: blink 1s infinite step-start;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .contact-info {
+        justify-content: center;
+    }
+    
+    .profile-text h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    header {
+        padding: 25px;
+    }
+    
+    .profile-text h1 {
+        font-size: 1.7rem;
+    }
+    
+    .profile-text h2 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .education-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .edu-date {
+        min-width: auto;
+        align-self: flex-start;
+    }
+    
+    .print-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.6s ease forwards;
+}
 
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
