@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Efecto de escritura para el título
-    const profileTitle = document.querySelector('.title');
+    const profileTitle = document.querySelector('.profile-text h2');
     const originalText = profileTitle.textContent;
     profileTitle.textContent = '';
     
@@ -13,51 +13,64 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    typeWriter();
+    // Iniciar efecto de escritura
+    setTimeout(typeWriter, 1000);
     
-    // Efecto de aparición para las secciones
-    const sections = document.querySelectorAll('.section');
-    sections.forEach((section, index) => {
+    // Efecto de aparición para las tarjetas
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
         setTimeout(() => {
-            section.style.opacity = 1;
-            section.style.transform = 'translateY(0)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
         }, 300 + index * 100);
     });
     
-    // Efecto de progreso para las habilidades (opcional)
-    const progressBars = document.querySelectorAll('.progress');
-    progressBars.forEach(bar => {
-        const width = bar.parentElement.getAttribute('data-progress');
+    // Efecto de progreso para las habilidades
+    const skillTags = document.querySelectorAll('.skill-tag');
+    skillTags.forEach((tag, index) => {
+        tag.style.opacity = '0';
+        tag.style.transform = 'scale(0.8)';
+        
         setTimeout(() => {
-            bar.style.width = width;
-        }, 1000);
+            tag.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            tag.style.opacity = '1';
+            tag.style.transform = 'scale(1)';
+        }, 500 + index * 50);
     });
     
-    // Efecto de conteo para estadísticas (opcional)
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / 100;
+    // Efecto de interacción con las tarjetas
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4)';
+        });
         
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCounter, 20);
-        } else {
-            counter.innerText = target;
-        }
+        card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+        });
     });
     
-    // Animación para las habilidades al hacer hover
-    const skills = document.querySelectorAll('.skill');
-    skills.forEach(skill => {
-        skill.addEventListener('mouseover', () => {
-            skill.style.transform = 'scale(1.1)';
-            skill.style.transition = 'transform 0.3s ease';
-        });
-        
-        skill.addEventListener('mouseout', () => {
-            skill.style.transform = 'scale(1)';
-        });
+    // Efecto de parpadeo en el icono de perfil
+    const profileImg = document.querySelector('.profile-img');
+    setInterval(() => {
+        profileImg.style.boxShadow = '0 0 25px var(--primary)';
+        setTimeout(() => {
+            profileImg.style.boxShadow = '0 0 20px var(--primary)';
+        }, 300);
+    }, 5000);
+    
+    // Efecto de movimiento en elementos de fondo
+    const floatingElements = document.querySelectorAll('.floating-element');
+    floatingElements.forEach(el => {
+        const randomX = (Math.random() - 0.5) * 40;
+        const randomY = (Math.random() - 0.5) * 40;
+        el.style.transform = `translate(${randomX}px, ${randomY}px)`;
     });
+    
+    // Actualizar año actual en el footer
+    const currentYear = new Date().getFullYear();
+    document.querySelector('footer p').textContent = `© ${currentYear} Yoinner David Alayo Rodriguez - Todos los derechos reservados`;
 });
