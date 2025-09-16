@@ -763,6 +763,207 @@ footer::before {
     animation: fadeIn 0.6s ease forwards;
 }
 
+@media print {
+    @page {
+        margin: 0.5in;
+        size: portrait;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+        padding: 0;
+        width: 100% !important;
+        font-family: 'Arial', sans-serif !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Ocultar elementos de fondo futuristas */
+    .matrix-bg, .circuit-grid, .floating-particles {
+        display: none !important;
+    }
+    
+    header, .card {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+        padding: 20px !important;
+    }
+    
+    header::before, header::after,
+    .card::before, .card::after {
+        display: none !important;
+    }
+    
+    .profile-img {
+        border: 2px solid #333 !important;
+        background: #f0f0f0 !important;
+        color: #333 !important;
+        box-shadow: none !important;
+        width: 100px !important;
+        height: 100px !important;
+        font-size: 40px !important;
+        animation: none !important;
+    }
+    
+    .profile-img::before {
+        display: none !important;
+    }
+    
+    .profile-text h1 {
+        color: #333 !important;
+        font-size: 1.8rem !important;
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    
+    .profile-text h2 {
+        color: #666 !important;
+        font-size: 1.1rem !important;
+    }
+    
+    .profile-text h2::before {
+        display: none !important;
+    }
+    
+    .contact-info {
+        justify-content: flex-start !important;
+    }
+    
+    .contact-item {
+        background: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
+        color: #333 !important;
+        box-shadow: none !important;
+        padding: 6px 12px !important;
+    }
+    
+    .contact-item::before {
+        display: none !important;
+    }
+    
+    .contact-item i {
+        color: #333 !important;
+    }
+    
+    a {
+        color: #333 !important;
+        text-decoration: none;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+        font-weight: normal;
+        color: #666;
+    }
+    
+    .card h3 {
+        color: #333 !important;
+        border-bottom: 1px solid #ddd !important;
+        font-size: 1.3rem !important;
+        text-shadow: none !important;
+    }
+    
+    .card h3::after {
+        display: none !important;
+    }
+    
+    .timeline::before {
+        background: #ccc !important;
+        box-shadow: none !important;
+    }
+    
+    .timeline-item::before {
+        background: #333 !important;
+        box-shadow: none !important;
+        animation: none !important;
+    }
+    
+    .timeline-date {
+        color: #333 !important;
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .company {
+        color: #666 !important;
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .skill-tag {
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+        color: #333 !important;
+        box-shadow: none !important;
+    }
+    
+    .skill-tag::before {
+        display: none !important;
+    }
+    
+    .project-link {
+        color: #333 !important;
+        text-shadow: none !important;
+    }
+    
+    .project-date {
+        color: #666 !important;
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .print-btn {
+        display: none !important;
+    }
+    
+    .main-content {
+        display: block !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+    footer {
+        border-top: 1px solid #ddd;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    
+    footer::before {
+        background: #333 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Ajustar fuentes para impresión */
+    body, .card, .timeline-content p {
+        font-size: 11pt !important;
+    }
+    
+    h1, h2, h3, h4 {
+        font-size: 1.1em !important;
+    }
+    
+    /* Detener todas las animaciones */
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
 .card:nth-child(3) { animation-delay: 0.3s; }
